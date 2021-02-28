@@ -1,5 +1,5 @@
 <h2>My Heroes</h2>
-<mat-selection-list #heroeslist [multiple]="false" class="heroes-list">
+<mat-selection-list #heroeslist [multiple]="false" class="heroes-list" (selectionChange)="onSelect($event.option.value)">
     <mat-list-option *ngFor="let hero of heroes" [value]="hero">
         <mat-icon mat-list-icon>stars</mat-icon>{{hero.name}}        
     </mat-list-option>
