@@ -5,26 +5,4 @@
     </mat-list-option>
 </mat-selection-list>
 
-<div *ngIf="heroeslist.selectedOptions.selected[0]">
-<mat-card class="hero-card">
-    <mat-card-header>
-        <mat-card-title>{{heroeslist.selectedOptions.selected[0].value.name | uppercase}}</mat-card-title>
-        <mat-card-subtitle>Details</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-form-field>
-            <mat-label>id:</mat-label>
-            <input matInput [(ngModel)]="heroeslist.selectedOptions.selected[0].value.id" readonly />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>name:</mat-label>
-            <input matInput [(ngModel)]="heroeslist.selectedOptions.selected[0].value.name" placeholder="name" />
-        </mat-form-field>
-    </mat-card-content>
-    <!--
-    <mat-card-actions>
-        <button mat-button>Edit</button>
-    </mat-card-actions>
-    -->
-</mat-card>
-</div>
+<app-hero-detail [hero]="heroeslist.selectedOptions.selected[0]?.value"></app-hero-detail>
