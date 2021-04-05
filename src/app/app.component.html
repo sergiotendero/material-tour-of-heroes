@@ -1,7 +1,29 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a> <br>
-  <a routerLink="/heroes">Heroes</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="over" #sidenav position="start">
+
+    <mat-nav-list>
+      <h2>Tour of heroes</h2>
+      <mat-divider></mat-divider>
+      <!-- Some examples of items-->
+      <mat-list-item (click)="sidenav.close()" [routerLink]="['/dashboard']">Dashboard<mat-icon matListIcon>home</mat-icon></mat-list-item>
+      <!-- With this code the routerlink only works on anchor not on whole item-->
+      <mat-list-item (click)="sidenav.close()"><a matLine routerLink="/heroes">Heroes</a><mat-icon matListIcon>stars</mat-icon></mat-list-item>
+      <mat-divider></mat-divider>
+      <a (click)="sidenav.close()" mat-list-item routerLink="/messages"><mat-icon matListIcon>message</mat-icon>Messages</a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      {{title}}
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
